@@ -17,9 +17,16 @@ use \App\Http\Controllers\PostsController;
 Route::get('/', function () {
     return view('welcome');
 });
-Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('projects', ProjectController::class);
 Route::get('/posts/{post}', [PostsController::class,'show']);
+
+Route::get('/contact', function(){
+    return view('contact');
+});
+
+Route::get('/about', function(){
+    return view('about');
+});
 
