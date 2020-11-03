@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ProjectController;
 use \App\Http\Controllers\PostsController;
+use \App\Models\Article;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,7 +27,9 @@ Route::get('/contact', function(){
     return view('contact');
 });
 
-Route::get('/about', function(){
-    return view('about');
+Route::get('/about', function(){    
+    return view('about', [
+        'articles' => Article::latest()->get()
+    ]);
 });
 
