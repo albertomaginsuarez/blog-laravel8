@@ -8,11 +8,11 @@
         id="page" 
         class="container"
     >
-        @foreach ($articles as $article)
+        @forelse ($articles as $article)
         <div id="content">
 			<div class="title">
 				<h2>
-                    <a href="/articles/{{$article->id}}/edit">{{$article->title}}</a>
+                <a href="{{$article->path()}}">{{$article->title}}</a>
                 </h2>		
             </div>
             <p>
@@ -20,8 +20,9 @@
             </p>			
             {!! $article->exerpt !!}
         </div>
-            
-        @endforeach		
+        @empty
+            <p>No hay elementos</p>                  
+        @endforelse		
 	</div>
 </div>
 
